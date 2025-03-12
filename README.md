@@ -42,9 +42,17 @@ ansible-playbook ansible/debug.yaml
 # ansible-playbook ansible/debug.yaml --extra-vars "{ 'my_variable':'test' }"
 ```
 
-### Playbook
+### Playbooks
 
-List of simple playbooks by modules
+[playbooks/apt.yaml](https://github.com/akmalovaa/ansible-sandbox/blob/main/ansible/playbooks/apt.yaml) module apt examples update and install packages 
+```sh
+ansible-playbook ansible/playbooks/apt.yaml
+```
+
+[playbooks/loop.yaml](https://github.com/akmalovaa/ansible-sandbox/blob/main/ansible/playbooks/apt.yaml) An example of using loops
+```sh
+ansible-playbook ansible/playbooks/loop.yaml
+```
 
 ### Roles
 
