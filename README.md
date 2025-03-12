@@ -4,7 +4,7 @@ Ready-made container and simple templates for Ansible experiments
 
 > Any operating system will do, the main thing is to install docker (podman)
 
-## Running Ansible in a container
+## Running
 
 Build and run sandbox container
 ```sh
