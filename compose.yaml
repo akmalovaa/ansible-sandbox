@@ -1,0 +1,9 @@
+services:
+  ansible:
+    build:
+      dockerfile: Dockerfile
+    environment:
+      ANSIBLE_CONFIG: "./ansible/ansible.cfg"
+    command: 'tail -f /dev/null'
+    volumes:
+      - .:/srv

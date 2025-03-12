@@ -1,0 +1,17 @@
+# Gitlab ansible example
+
+stages:
+  - deploy
+
+image: ghcr.io/akmalovaa/iac-tools
+
+.ansbile_prepare: &ansbile_prepare
+    - echo "$ANSIBLE_VAULT" > ./ansible/vault.key
+    - echo "$SSH_PRIVATE_KEY" > ./ansible/ssh/id_rsa
+    - chmod -R 400 ./ansible/ssh/id_rsa
+
+deploy:
+  stage: deploy
+  script:
+    - *ansbile_prepare
+    - ansible-playbook ansible/playbook.yaml

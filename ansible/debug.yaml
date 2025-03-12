@@ -1,0 +1,55 @@
+- hosts: all
+  vars:
+    my_variable: aaaawww
+
+  tasks:
+    - name: Show ansible variable
+      debug:
+        msg: "variable: {{ my_variable }}"
+
+    - name: Show environment variable
+      debug:
+        var: lookup('env', 'ANSIBLE_CONFIG')
+
+    - name: Show OS release info
+      debug: 
+        msg: "{{ ansible_distribution }} {{ ansible_distribution_version}} {{ansible_distribution_release}}"
+
+    - name: Show total CPU + RAM
+      debug:
+        msg: | 
+          CPU cores: {{ ansible_processor_cores * ansible_processor_count }}
+          Total memory: {{ ansible_memtotal_mb }} MB"
+
+    # Save output `df -h`` command to `storage` variable and show it
+    - name: Check disk space
+      command: df -h
+      register: storage
+    - debug: 
+        var: storage.stdout_lines
+
+    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_facts_module.html.
+    - name: Populate service facts 
+      service_facts:
+
+    - name: Show service cron status
+      debug:
+        # var: ansible_facts.services # show all services
+        var: ansible_facts.services.cron # show service cron
+
+
+    # #  https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_facts_module.html
+    # - name: Gather the package facts
+    #   package_facts:
+    #     manager: auto
+
+    # - name: Print all available packages
+    #   debug:
+    #     var: ansible_facts.packages
+
+    - name: Show network interface
+      debug:
+        msg: |
+          Primary interface: {{ ansible_default_ipv4.interface }}
+          IP address: {{ ansible_default_ipv4.address }}
+          Gateway: {{ ansible_default_ipv4.gateway }}

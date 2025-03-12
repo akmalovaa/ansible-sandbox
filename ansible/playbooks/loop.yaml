@@ -1,0 +1,16 @@
+- hosts: all
+  tasks:
+    - name: Register loop output as a variable
+      shell: "echo {{ item }}"
+      loop:
+        - "test"
+        - "test2"
+        - "test3"
+      register: echo
+      changed_when: echo.stdout != "test"
+
+    - name: Show all the hosts in the current play
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ ansible_play_batch }}"
+

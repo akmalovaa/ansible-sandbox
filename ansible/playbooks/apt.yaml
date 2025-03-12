@@ -1,0 +1,18 @@
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+# Use DNF module for Fedora, CentOS Stream, RHEL 8+ https://docs.ansible.com/ansible/latest/collections/ansible/builtin/dnf_module.html
+---
+- hosts: all
+  tasks:
+    - name: Upgrade the OS (apt dist-upgrade)
+      apt:
+        upgrade: dist
+
+    - name: Update (apt update)
+      apt:
+        update_cache: yes
+
+    - name: Install packages
+      apt:
+        pkg:
+          - htop
+          - curl
