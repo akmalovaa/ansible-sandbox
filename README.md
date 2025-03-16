@@ -4,6 +4,11 @@ Ready-made container and simple templates for Ansible experiments
 
 > Any operating system will do, the main thing is to install docker (podman)
 
+```sh
+git clone https://github.com/akmalovaa/ansible-sandbox.git
+cd ansible-sandbox
+```
+
 ## Running
 
 Build and run sandbox container
@@ -18,8 +23,9 @@ docker-compose exec ansible bash
 
 ### Prepare
 
-1) check config - [ansible.cfg](ansible.cfg)
+1) show version or check config - [ansible.cfg](ansible.cfg)
 ```sh
+ansible --version
 ansible-config view
 ```
 

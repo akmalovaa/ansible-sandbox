@@ -12,6 +12,8 @@ image: ghcr.io/akmalovaa/iac-tools
 
 deploy:
   stage: deploy
+  variables:
+    ANSIBLE_CONFIG: ./ansible/ansible.cfg
   script:
     - *ansbile_prepare
     - ansible-playbook ansible/playbook.yaml
