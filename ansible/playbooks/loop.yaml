@@ -1,4 +1,5 @@
 - hosts: all
+
   tasks:
     - name: Register loop output as a variable
       shell: "echo {{ item }}"

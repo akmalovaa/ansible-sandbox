@@ -1,0 +1,18 @@
+---
+- name: Show all facts
+  hosts: all
+
+  tasks:
+    - name: Show OS family
+      debug:
+        msg: "variable: {{ ansible_os_family }}"
+
+    - name: Example when OS Debian
+      debug:
+        msg: "It is realy Debian OS family"
+      when: ansible_os_family == "Debian"
+    
+    - name: Example when OS Debian
+      debug:
+        msg: "This is not a Debian OS family"
+      when: ansible_os_family != "Debian"

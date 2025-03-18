@@ -1,0 +1,16 @@
+# unarchive module – Unpacks an archive after (optionally) copying it from the local machine
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/unarchive_module.html#ansible-collections-ansible-builtin-unarchive-module
+---
+- name: unarchive example
+  hosts: all
+  vars:
+    nginx_version: 1.27.4
+
+  tasks:
+    - name: Unpacking nginx archive
+      unarchive:
+        remote_src: yes
+        src: "https://nginx.org/download/nginx-{{ nginx_version }}.tar.gz"
+        creates: /tmp/nginx-{{ nginx_version }}.tar.gz
+        dest: /tmp/
+ 

@@ -1,4 +1,6 @@
+# Manages apt-packages
 # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+
 # Use DNF module for Fedora, CentOS Stream, RHEL 8+ https://docs.ansible.com/ansible/latest/collections/ansible/builtin/dnf_module.html
 ---
 - hosts: all
@@ -7,12 +9,16 @@
       apt:
         upgrade: dist
 
-    - name: Update (apt update)
+    - name: Run the equivalent of "apt-get update" as a separate step
       apt:
         update_cache: yes
 
-    - name: Install packages
+    - name: Install a list of packages
       apt:
         pkg:
           - htop
           - curl
+
+    - name: Run the equivalent of "apt-get clean" as a separate step
+      ansible.builtin.apt:
+        clean: yes

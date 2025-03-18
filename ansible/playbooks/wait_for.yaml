@@ -1,0 +1,19 @@
+# wait_for module – Waits for a condition before continuing
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/wait_for_module.html#ansible-collections-ansible-builtin-wait-for-module
+
+# wait_for_connection module – Waits until remote system is reachable/usable
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/wait_for_connection_module.html#ansible-collections-ansible-builtin-wait-for-connection-module
+
+# Need to write better examples.
+---
+- name: Waits for a condition before continuing
+  hosts: all
+
+  tasks:
+    - name: We are waiting until we can connect to the host via SSH
+      delegate_to: localhost
+      wait_for:
+        host: "{{ inventory_hostname }}"
+        port: 22
+        state: started
+        timeout: 60

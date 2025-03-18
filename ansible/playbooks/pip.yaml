@@ -1,0 +1,20 @@
+# PIP module
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/pip_module.html#ansible-collections-ansible-builtin-pip-module
+
+---
+- name: Check var
+  hosts: all
+
+  tasks:
+  - package:
+      name: python3-pip
+      state: present
+
+  - name: Pip install pyyaml
+    pip:
+      name: "{{ item }}"
+      state: present
+      break_system_packages: true # This is typically required when installing packages outside a virtual environment on modern systems.
+    loop:
+      - pyyaml
+      - requests

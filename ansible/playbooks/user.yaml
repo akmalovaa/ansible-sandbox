@@ -1,0 +1,16 @@
+# user module – Manage user accounts
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/user_module.html#ansible-collections-ansible-builtin-user-module
+
+- name: create user example
+  hosts: all
+
+  tasks:
+    - name: Create ansible user
+      user:
+        name: ansible
+        shell: /bin/bash
+        create_home: yes
+        groups: developers
+        append: yes
+        password: "{{ 'GZzroI!e' }}"  # use ansible-vault for decrypt
+        comment: "test ansible user"

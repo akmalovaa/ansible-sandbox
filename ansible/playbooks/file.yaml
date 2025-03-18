@@ -1,0 +1,32 @@
+# file module – Manage files and file properties
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/file_module.html#ansible-collections-ansible-builtin-file-module
+
+- name: Manage files and file properties
+  hosts: all
+
+  tasks:
+    - name: Create directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: 0755
+      loop:
+        - '/tmp/dir1'
+        - '/tmp/dir2'
+
+    - name: Create file
+      file:
+        path: "/tmp/dir1/readme.txt"
+        state: touch
+        owner: www-data
+        group: www-data
+        mode: 0644
+    
+    - name: Change file rights
+      file:
+        path: "/tmp/dir1/readme.txt"
+        owner: www-data
+        group: www-data
+        mode: 0664

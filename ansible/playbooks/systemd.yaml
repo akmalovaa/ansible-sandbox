@@ -1,0 +1,21 @@
+# systemd_service module – Manage systemd units
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/systemd_service_module.html#ansible-collections-ansible-builtin-systemd-service-module
+# ansible.builtin.systemd is renamed to ansible.builtin.systemd_service to better reflect the scope of the module. ansible.builtin.systemd is kept as an alias for backward compatibility.
+
+- name: Manage systemd units
+  hosts: all
+
+  tasks:
+    - name: Systemd reload
+      systemd_service:
+        daemon_reload: true
+    
+    - name: Stop service cron on debian, if running
+      systemd_service:
+        name: cron
+        state: stopped
+
+    - name: Reload SSH Config
+      systemd_service:
+        name: ssh.service
+        state: reloaded

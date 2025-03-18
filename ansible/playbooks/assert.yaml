@@ -1,0 +1,23 @@
+# assert module – Asserts given expressions are true
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/assert_module.html#ansible-collections-ansible-builtin-assert-module
+---
+- name: Check var
+  hosts: all
+  vars:
+    my_age: 42
+
+  tasks:
+    - name: Checking the type of a variable
+      fail:
+        msg: "The variable must be an integer"
+      when: variable my_age is not integer
+
+    - name: The value of the my_age variable must be between 18 and 100
+      assert:
+        that:
+          - my_age <= 100
+          - my_age >= 18
+        fail_msg: "Incorrect my_age value - must be from 0 to 100"
+        success_msg: "The value of my_age is correct"
+
+# ansible-playbook ansible/playbooks/assert.yaml --extra-vars "{ 'my_age': 123 }"
