@@ -1,15 +1,19 @@
-# Ansible Sanbox
+# Ansible Sandbox
 
 Ready-made container and simple templates for Ansible experiments
 
 > Any operating system will do, the main thing is to install docker (podman)
 
+![sandbox](sandbox.excalidraw.png)
+
+
+## Running
+
+Clone repo
 ```sh
 git clone https://github.com/akmalovaa/ansible-sandbox.git
 cd ansible-sandbox
 ```
-
-## Running
 
 Build and run sandbox container
 ```sh
