@@ -10,7 +10,7 @@
     - name: Checking the type of a variable
       fail:
         msg: "The variable must be an integer"
-      when: variable my_age is not integer
+      when: my_age is not integer
 
     - name: The value of the my_age variable must be between 18 and 100
       assert:

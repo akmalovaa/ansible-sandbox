@@ -12,6 +12,11 @@
         msg: "It is realy Debian OS family"
       when: ansible_os_family == "Debian"
     
+    - name: Example 2 when OS Debian family
+      debug:
+        msg: "It is realy Debian OS family"
+      when: ansible_distribution in ["Debian", "Ubuntu"]
+
     - name: Example when OS Debian
       debug:
         msg: "This is not a Debian OS family"

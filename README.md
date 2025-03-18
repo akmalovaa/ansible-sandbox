@@ -29,7 +29,7 @@ ansible --version
 ansible-config view
 ```
 
-2) update hosts file - [hosts.yaml](hosts.yaml)
+2) update hosts file - [hosts.yaml](https://github.com/akmalovaa/ansible-sandbox/blob/main/ansible/hosts.yaml)
 
 Сhange your hosts
 
@@ -71,3 +71,8 @@ Examples of simple roles
 ```sh
 docker-compose down -v
 ```
+
+
+recommended:
+- [github repo ansible user_guides](https://github.com/bhavikbhavsar/ansible/tree/devel/docs/docsite/rst/user_guide)
+- 
