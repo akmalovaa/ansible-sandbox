@@ -74,5 +74,6 @@ docker-compose down -v
 
 
 recommended:
+- [awesome-ansible](https://github.com/ansible-community/awesome-ansible/blob/main/README.md)
 - [github repo ansible user_guides](https://github.com/bhavikbhavsar/ansible/tree/devel/docs/docsite/rst/user_guide)
 - 

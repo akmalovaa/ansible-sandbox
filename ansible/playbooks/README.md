@@ -4,4 +4,10 @@
 TO DO:
  - templates
  - copy
-
+ - content
+ - git
+ - uri
+ - replace
+ - linefile
+ - blockinfile
+ - 

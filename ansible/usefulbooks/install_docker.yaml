@@ -1,5 +1,5 @@
-# Install docker for Debian family
-# For the RedHat family, it's better to use Podman
+# Install docker for Debian OS family
+# For the RedHat OS family, it's better to use Podman
 
 - name: "Install docker"
   hosts: all
@@ -24,7 +24,7 @@
 
     - name: Add Docker Repository
       apt_repository:
-        repo: deb [arch=amd64] "https://download.docker.com/linux/{{ ansible_distribution | lower }}" {{ ansible_distribution_release }} stable
+        repo: deb [arch=amd64] "https://download.docker.com/linux/{{ ansible_distribution | lower }}" {{ ansible_distribution_release | lower }} stable
         state: present
 
     - name: Debian-Based | Install Docker packages
