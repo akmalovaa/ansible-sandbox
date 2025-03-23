@@ -6,6 +6,7 @@ Ready-made container and simple templates for Ansible experiments
 
 ![sandbox](sandbox.excalidraw.png)
 
+All you need to do is change hosts in the file `ansible/hosts.yaml` and run
 
 ## Running
 
@@ -85,7 +86,7 @@ docker-compose down -v
 
 ### Alpine image
 
-[DockerHub](https://hub.docker.com/r/alpine/ansible)
-[GitHub](https://github.com/alpine-docker/multi-arch-docker-images/blob/master/ansible/Dockerfile)
+- [DockerHub](https://hub.docker.com/r/alpine/ansible)
+- [GitHub](https://github.com/alpine-docker/multi-arch-docker-images/blob/master/ansible/Dockerfile)
 
 
