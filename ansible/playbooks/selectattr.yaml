@@ -1,0 +1,39 @@
+# Selectattr and map examples
+
+- hosts: all
+  vars:
+    fruits_list:
+      - name: apple
+        color: red
+      - name: banana
+        color: yellow
+      - name: cherry
+        color: red
+    dict1:
+      1:
+        name: Apple
+        model: 15
+      2:
+        name: OnePlus
+        model: Nord 3
+      3:
+        name: Xiaomi
+        model: 14T
+
+  tasks:
+    - name: Selectattr show red fruits
+      debug:
+        msg: "{{ item.name }} is red."
+      loop: "{{ fruits_list | selectattr('color', '==', 'red') | list }}"  # equalto
+
+    - name: debug dict1
+      debug:
+        var: dict1
+
+    - name: debug dict1 with dict2items
+      debug:
+        var: dict1 | dict2items
+
+    - name: loop through dict1 using map to create a list of names all on one line
+      debug:
+        msg: "{{ dict1 | dict2items | map(attribute='value.name') | join(',') }}"

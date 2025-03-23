@@ -1,0 +1,15 @@
+http:
+  routers:
+    {{ item.key }}-router:
+      entryPoints:
+        - websecure
+      middlewares:
+        - exceptions
+      rule: "Host(`{{ item.value.traefik_host }}`)"
+      service: {{ item.key }}-service
+      tls: {}
+  services:
+    {{ item.key }}-service:
+      loadBalancer:
+        servers:
+          - url: {{ item.value.traefik_url }}

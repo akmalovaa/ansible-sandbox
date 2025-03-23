@@ -1,0 +1,14 @@
+# copy module – Copy files to remote locations
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/copy_module.html#ansible-collections-ansible-builtin-copy-module
+
+- name: Copy files to remote locations
+  hosts: all
+
+  tasks:
+  - name: Copy file with owner and permissions
+    copy:
+      src: ../files
+      dest: /tmp
+      owner: root
+      group: root
+      mode: '0644'

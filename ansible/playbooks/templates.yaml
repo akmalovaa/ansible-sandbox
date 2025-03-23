@@ -1,0 +1,40 @@
+# template module – Template a file out to a target host
+# https://docs.ansible.com/ansible-core/2.18/collections/ansible/builtin/template_module.html#ansible-collections-ansible-builtin-template-module
+
+---
+- name: Template a file out to a target host
+  hosts: all
+
+  tasks:
+    - name: Simple template a file
+      template:
+        src: ../files/simple_template.j2
+        dest: /tmp/test.conf
+      vars:
+        name: "Ansible"
+        task: "Template"
+
+    - name: Create tmp traefik directory
+      file:
+        path: /tmp/traefik
+        state: directory
+        mode: '0755'
+
+    - name: Generation of configuration files using a loop
+      template:
+        src: ../files/traefik_template.yaml.j2
+        dest: "/tmp/traefik/services_{{ item.key }}.yaml"
+        mode: '0644'
+      loop: "{{ traefik_services | dict2items }}"
+      vars:
+        traefik_services:
+          nginx:
+            traefik_host: nginx.example.com
+            traefik_url: http://10.0.0.13:80
+          authelia:
+            traefik_host: authelia.example.com
+            traefik_url: http://authelia:9091
+          db:
+            traefik_host: db.example.com
+            traefik_url: http://10.0.0.5:3000
+

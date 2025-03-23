@@ -5,20 +5,21 @@
 ---
 - hosts: all
   tasks:
-    - name: Upgrade the OS (apt dist-upgrade)
-      apt:
-        upgrade: dist
-
     - name: Run the equivalent of "apt-get update" as a separate step
       apt:
         update_cache: yes
 
     - name: Install a list of packages
       apt:
-        pkg:
-          - htop
-          - curl
+        pkg: "{{ item }}"
+      loop:
+        - curl
+        - htop
 
     - name: Run the equivalent of "apt-get clean" as a separate step
       ansible.builtin.apt:
         clean: yes
+
+    - name: Upgrade the OS (apt dist-upgrade)
+      apt:
+        upgrade: dist
