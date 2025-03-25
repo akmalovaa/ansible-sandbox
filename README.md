@@ -18,7 +18,7 @@ cd ansible-sandbox
 
 Build and run sandbox container
 ```sh
-docker-compose up -d --build
+docker-compose up -d
 ```
 
 Exec for play (enter the container)
